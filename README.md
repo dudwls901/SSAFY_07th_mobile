@@ -35,5 +35,9 @@ ctrl + o : 현재 클래스의 필드, 메소드 검색 <br>
 2. 상품 검색 (쓰레드, 파일 입출력)
 
 ### 0121 금
-1. qury practice (dml,내장 함수)
+1. query practice (dml,내장 함수)
 2. 상품 관리 db (ddl, dml)
+
+### 0125 화
+1. query practice(join, 서브쿼리, group by)
+2. query practice(join, 서브쿼리, group by)
