@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./poll.css" />
+    <script type="text/javascript" src="./poll.js"></script>
+</head>
+<body>
+    <div class="poll">
+        <h3 class = "poll-title">투표 만들기</h3>
+        <div class="poll-content">
+            <form action="">
+                <div class="poll-question">
+                    <label>질문 내용</label>
+                    <input type="text" id="question" name="question" placeholder="질문내용..." />
+                </div>
+                <div class="poll-answer">
+                    <label>답변 항목</label>
+                    <button type="button" id ="btn-add" class="button">추가</button>
+                </div>
+                <div id="poll-answer-list">
+                    <div class="poll-answer-item">
+                        <input type="text" name="answer" />
+                    </div>
+                </div>
+                <div class="poll-make">
+                    <button type="button" id="btn-make" class="button btn-primary">투표 생성</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

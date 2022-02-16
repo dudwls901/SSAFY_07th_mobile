@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+/* 투표 만들기 */
+.poll {
+  border: 2px solid #dddddd;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 20px;
+  
+}
+
+.poll-title {
+  padding-bottom: 10px;
+  color: #120644;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.poll-question {
+  margin-bottom: 10px;
+}
+
+.poll-answer {
+  margin-bottom: 10px;
+}
+
+.poll-answer-item {
+  margin-bottom: 10px;
+}
+
+.poll-make {
+  margin-top: 10px;
+  text-align: center;
+}
+
+input[type='text'] {
+  width: 250px;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(235, 235, 235);
+  padding: 7px;
+  margin-right: 5px;
+}
+
+input[type='text']::placeholder {
+  font-weight: bold;
+  font-size: 13px;
+  color: rgb(150, 150, 150);
+}
+
+label {
+  color: #120644;
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.button {
+  background: white;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 4px;
+}
+
+.btn-primary {
+  border-color: rgba(128, 0, 128, 0.3);
+  background: rgb(128, 0, 128);
+  color: #fff;
+}
