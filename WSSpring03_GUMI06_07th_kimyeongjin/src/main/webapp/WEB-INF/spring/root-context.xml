@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- com.ssafy.ws.model 패키지를 스캔해서 빈을 등록한다. -->
+	<context:component-scan base-package="com.ssafy.ws.model"></context:component-scan>
+	<aop:aspectj-autoproxy/>
+	
+	<!-- BasicDataSource 타입의 빈을 선언하고 필요한 속성을 setter로 설정하므로 property 태그가 사용된다. -->
+	<bean id="datasource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/ssafydb?serverTimezone=Asia/Seoul"></property>
+		<property name="username" value="ssafy"></property>
+		<property name="password" value="ssafy"></property>
+	</bean>
+	<!-- class 라이브러리에 속하는 java파일을 가져온다. -->
+	<!-- Driver라는 setter가 존재. 그 다음은 인자? -->
+	<!-- url : 접속할 데이터베이스 url -->
+	<!-- username, password -> mysql 정보 -->
+	
+	<bean id="logging-aspect" class="com.ssafy.ws.aop.LoggingAspect"></bean>
+</beans>
