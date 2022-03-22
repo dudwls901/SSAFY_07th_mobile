@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- com.ssafy.ws.model 패키지를 스캔해서 빈을 등록한다. -->
+	<context:component-scan base-package="com.ssafy.ws.model"></context:component-scan>
+	
+	<!-- xml 기반으로 자동으로 프록시를 생성하도록 설정한다. -->
+	<aop:aspectj-autoproxy/>
+	
+	<!-- BasicDataSource 타입의 빈을 선언하고 필요한 속성을 setter로 설정하므로 property 태그가 사용된다. -->
+	<bean id="datasource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/ssafydb?serverTimezone=Asia/Seoul"></property>
+		<property name="username" value="ssafy"></property>
+		<property name="password" value="ssafy"></property>
+	</bean>
+	
+	
+		<!-- Transaction 처리를 위한 transactionManager를 등록한다. 아이디는 언제나 고정한다. -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<constructor-arg ref="datasource"></constructor-arg>
+	</bean>
+	
+	<!-- class 라이브러리에 속하는 java파일을 가져온다. -->
+	<!-- Driver라는 setter가 존재. 그 다음은 인자? -->
+	<!-- url : 접속할 데이터베이스 url -->
+	<!-- username, password -> mysql 정보 -->
+	
+		<!-- MyBatis를 사용하기 위한 sqlSessionFactory를 등록한다. -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource" />
+		<!-- mapper xml 파일의 경로를 ant 표현식의 형태로 사용한다. -->
+		<property name="mapperLocations" value="classpath*:mappers/**/*.xml" />
+		<!-- mapper에서 사용할 DTO들의 기본 패키지를 등록한다. -->
+		<property name="typeAliasesPackage" value="com.ssafy.ws.dto"></property>
+	</bean>
+
+	<!-- mybatis에서 제공하는 scan 태그를 통해 repository interface(Dao)들의 위치를 지정한다. -->
+	<mybatis-spring:scan base-package="com.ssafy.ws.model.repo"/>
+
+</beans>

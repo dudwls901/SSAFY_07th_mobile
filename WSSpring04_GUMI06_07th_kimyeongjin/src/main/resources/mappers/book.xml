@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao!!!! repoImpl대신 사용하는 mappers -->
+<mapper namespace="com.ssafy.ws.model.repo.BookRepo">
+	<!-- Board 정보를 저장한다.  useGeneratedKeys="true"keyProperty="no"-->
+	<insert id="insert" parameterType="Book" >
+		insert into book(isbn, title, author, price, content, img)
+		values (#{isbn}, #{title},#{author}, #{price}, #{content}, #{img})
+	</insert>
+	
+	<!-- 원래 풀네임 작성해야하는데 스프링 설정에서 별칭으로 앞에 패키지 넣어주었으니 그냥 Board만 쓰는 거임 -->
+	<!-- Board 정보를 수정한다. -->
+	<update id="update" parameterType="Book">
+		update book
+		set
+			title = #{title},
+			author = #{author},
+			content = #{content},
+			img = #{img}
+		where isbn = #{isbn}
+	</update>
+
+	<!-- Book 정보를 삭제한다. -->
+	<delete id="delete" parameterType="string">
+		delete from book
+		where isbn = #{isbn}
+	</delete>
+
+	<!-- Book 정보를 조회한다. -->
+	<select id="select" parameterType="string" resultType="Book">
+		select * from book
+		where isbn = #{isbn}
+	</select>
+
+	<!-- Book에서 검색한다. -->
+	<select id="search" resultType="Book">
+		select * from book
+	</select>
+</mapper>
