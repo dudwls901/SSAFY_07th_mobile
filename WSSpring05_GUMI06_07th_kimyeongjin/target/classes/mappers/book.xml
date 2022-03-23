@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.ws.model.repo.BookRepo">
+	<!-- book 테이블 전체 게시물을 가져오기 -->
+	<select id="search" resultType="Book">
+		select * from book
+	</select>
+	
+	<!-- book 테이블에 도서 등록하기 -->
+	<insert id="insert" parameterType="Book" useGeneratedKeys="true" keyProperty="no">
+		insert into book(isbn, title, author, price, content, img)
+		values (#{isbn}, #{title}, #{author}, #{price}, #{content}, #{img})
+	</insert>
+	
+	<!-- 도서 하나를 상세 조회 -->
+	<select id="select" parameterType="string" resultType="Book">
+		select * from book
+		where isbn = #{isbn}
+	</select>
+	
+	<!-- 도서 수정 -->
+	<update id="update" parameterType="Book">
+		update book
+		set
+			title = #{title},
+			author = #{author},
+			price = #{price},
+			img = #{img},
+			content = #{content}		
+		where isbn = #{isbn}
+	</update>
+	
+	<!-- 도서 하나를 삭제한다 -->
+	<delete id="delete" parameterType="string">
+		delete from book
+		where isbn = #{isbn}
+	</delete>
+	
+</mapper>
