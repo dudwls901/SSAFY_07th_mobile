@@ -1,4 +1,4 @@
-package com.ssafy.ui
+package com.ssafy.hw_android_ui_01_kimyeongjin
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,9 +12,8 @@ class CustomListAdapter(context: Context, var items: List<Map<String, String>>, 
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = inflater.inflate(layout, null)
-        view.findViewById<TextView>(R.id.tvIdx).text = "순번: ${ position }"
-        view.findViewById<TextView>(R.id.tvId).text = items[position]["id"]
-        view.findViewById<TextView>(R.id.tvName).text = items[position]["name"]
+        view.findViewById<TextView>(R.id.textView).text = items[position]["id"]
+        view.findViewById<TextView>(R.id.editText).setText(items[position]["name"])
         return view
     }
 }
