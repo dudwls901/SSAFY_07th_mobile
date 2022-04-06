@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="customIntroView">
+        <attr name="introImage" format="integer|reference" />
+        <attr name="introText" format="string"/>
+    </declare-styleable>
+
+<!--    <declare-styleable name="customItemView">-->
+<!--        <attr name="titleText" format="string" />-->
+<!--        <attr name="contentText" format="string"/>-->
+<!--        <attr name="dateText" format="string"/>-->
+<!--    </declare-styleable>-->
+
+</resources>
