@@ -28,6 +28,7 @@ class StuffActivity : AppCompatActivity() {
 
     private lateinit var btnRegister: Button
     private lateinit var stuffList: MutableList<Stuff>
+    private lateinit var listView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,17 +36,10 @@ class StuffActivity : AppCompatActivity() {
 
         btnRegister = findViewById(R.id.btn_stuff_register)
 
-        // ListView에 들어갈 ArrayList 생성
-        stuffList = arrayListOf()
-        getList()
-        // Adapter 생성
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, stuffList)
-
         // ListView 연결
-        val listView: ListView = findViewById(R.id.listview_stuff_stuff)
+        listView = findViewById(R.id.listview_stuff_stuff)
 
-        // Adapter와 ListView 연결
-        listView.adapter = adapter
+        updateListView()
 
         // Intent 사용
         val stuffEditLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
@@ -59,7 +53,7 @@ class StuffActivity : AppCompatActivity() {
 
                 when (actionFlag) {
                     ActionFlag.DELETE -> {
-                        deleteStuff(position)
+                        deleteStuff(stuffList[position].id)
                     }
 
                     ActionFlag.REGISTER -> {
@@ -75,9 +69,8 @@ class StuffActivity : AppCompatActivity() {
                     }
                 }
                 //리스트 갱신
-                getList()
+                updateListView()
                 Log.d(TAG, "onCreate stuff: ${stuffList}")
-                adapter.notifyDataSetChanged()
             }
         }
 
@@ -106,12 +99,23 @@ class StuffActivity : AppCompatActivity() {
             }
         }
     }
-    private fun getList(){
+    // ListView와 Adapter 연결하고 ListView 내용 갱신하기
+    private fun updateListView() {
+        // ListView에 들어갈 ArrayList 생성
         Log.d(TAG, "getList: stuff ${MyServiceConnection.isBound}")
         if(MyServiceConnection.isBound){
             stuffList = MyServiceConnection.myService.stuffSelectAll()
         }
+        // Adapter 생성
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, stuffList)
+
+        // Adapter와 ListView 연결
+        listView.adapter = adapter
+
+        // ListView 변경 적용
+        adapter.notifyDataSetChanged()
     }
+
     private fun insertStuff(name: String, count: Int){
         if(MyServiceConnection.isBound){
             MyServiceConnection.myService.stuffInsert(Stuff(name, count))

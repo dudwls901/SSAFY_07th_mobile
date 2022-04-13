@@ -11,12 +11,13 @@ import com.ssafy.cleanstore.dto.Stuff
 private const val TAG = "BoundService"
 
 class BoundService : Service() {
-    private lateinit var myLocalBinder:MyLocalBinder
+//    private lateinit var myLocalBinder:MyLocalBinder
+    private val myLocalBinder = MyLocalBinder()
 //    private lateinit var stuffDao: StuffDao
     private val stuffDao = StuffDao()
     override fun onBind(intent: Intent): IBinder {
         Log.d(TAG, "onBind: $intent")
-        myLocalBinder = MyLocalBinder()
+//        myLocalBinder = MyLocalBinder()
 
         Log.d(TAG, "onBind: $stuffDao")
         return myLocalBinder
@@ -70,7 +71,7 @@ class BoundService : Service() {
 //클라이언트는 이 객체를 이용해 서비스에 선언된 기능을 호출
     inner class MyLocalBinder : Binder() {
         //외부 객체인 BoundService 객체를 반환하는 함수
-        fun getService(): BoundService = BoundService()
+        fun getService(): BoundService = this@BoundService
     }
 
 }
