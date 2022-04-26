@@ -57,4 +57,16 @@ dependencies {
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$roomVersion")
 
+    //for macOS
+    kapt "org.xerial:sqlite-jdbc:3.34.0"
+
+    // Jetpack Navigation Kotlin
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+
+    // Fragment 간 데이터 전송을 위해 추가
+    // Jetpack : Fragment Kotlin Extension
+    implementation 'androidx.fragment:fragment-ktx:1.3.0'
+
+
 }

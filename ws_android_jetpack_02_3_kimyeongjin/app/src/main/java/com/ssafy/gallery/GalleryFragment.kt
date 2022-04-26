@@ -6,14 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ssafy.gallery.databinding.FragmentGalleryBinding
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 private const val TAG = "GalleryFragment_sss"
-class GalleryFragment(val mainActivity: MainActivity) : Fragment(), PhotoClickListener, CoroutineScope {
-
+class GalleryFragment() : Fragment(), PhotoClickListener, CoroutineScope {
+//val mainActivity: MainActivity
     private val job = Job()
 
     override val coroutineContext: CoroutineContext
@@ -23,6 +26,9 @@ class GalleryFragment(val mainActivity: MainActivity) : Fragment(), PhotoClickLi
     private lateinit var adapter: GalleryAdapter
     private var photoList = mutableListOf<Photo>()
     private lateinit var galleryRepository: GalleryRepository
+
+    //navigation
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +41,10 @@ class GalleryFragment(val mainActivity: MainActivity) : Fragment(), PhotoClickLi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         galleryRepository = GalleryRepository.getInstance(requireContext().applicationContext)
+
+        navController = Navigation.findNavController(view)
+
+
 
         launch(coroutineContext) {
             withContext(Dispatchers.IO) {
@@ -55,12 +65,17 @@ class GalleryFragment(val mainActivity: MainActivity) : Fragment(), PhotoClickLi
 
     companion object {
 
+//        @JvmStatic
+//        fun newInstance(mainActivity: MainActivity) = GalleryFragment(mainActivity)
         @JvmStatic
-        fun newInstance(mainActivity: MainActivity) = GalleryFragment(mainActivity)
+        fun newInstance() = GalleryFragment()
+
     }
 
     override fun onPhotoClickListener(photoViewModel: PhotoViewModel) {
-        mainActivity.replaceFragment(PhotoFragment.newInstance(photoViewModel))
-
+        //legacy
+//        mainActivity.replaceFragment(PhotoFragment.newInstance(photoViewModel))
+        //navigation
+        navController.navigate(R.id.action_galleryFragment_to_photoFragment, bundleOf(Pair("photoViewModel",photoViewModel)))
     }
 }
