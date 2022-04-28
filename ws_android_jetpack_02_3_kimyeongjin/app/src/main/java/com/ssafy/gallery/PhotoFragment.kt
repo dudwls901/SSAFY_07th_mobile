@@ -25,7 +25,7 @@ class PhotoFragment(val photoViewModel: PhotoViewModel) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireContext().applicationContext
+
     }
 
 

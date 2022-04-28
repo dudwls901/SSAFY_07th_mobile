@@ -29,7 +29,6 @@ class GalleryAdapter(val photoClickListener: PhotoClickListener): ListAdapter<Ph
             binding.imageView.setOnClickListener {
                 photoClickListener.onPhotoClickListener(PhotoViewModel(photo))
             }
-//            Log.d(TAG, "bind_sss: ${binding.photoViewModel}")
         }
     }
 

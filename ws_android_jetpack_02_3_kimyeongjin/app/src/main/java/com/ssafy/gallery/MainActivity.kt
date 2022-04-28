@@ -23,9 +23,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(binding.fragmentContainer.id, galleryFragment).commit()
 
-
     }
-
 
     fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
