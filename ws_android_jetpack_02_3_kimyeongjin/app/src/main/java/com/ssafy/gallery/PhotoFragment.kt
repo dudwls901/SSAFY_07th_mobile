@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import com.ssafy.gallery.databinding.FragmentPhotoBinding
 
 private const val TAG = "PhotoFragment_sss"
-class PhotoFragment(val photoViewModel: PhotoViewModel) : Fragment() {
-
+class PhotoFragment() : Fragment() {
+//val photoViewModel: PhotoViewModel
     private lateinit var binding: FragmentPhotoBinding
 
     override fun onCreateView(
@@ -19,19 +19,23 @@ class PhotoFragment(val photoViewModel: PhotoViewModel) : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentPhotoBinding.inflate(layoutInflater,container, false)
-        binding.photoViewModel = photoViewModel
+//        binding.photoViewModel = photoViewModel
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val bundlePhotoViewModel = arguments?.getSerializable("photoViewModel") as PhotoViewModel
+        binding.photoViewModel = bundlePhotoViewModel
     }
 
 
     companion object {
+//        @JvmStatic
+//        fun newInstance(photoViewModel: PhotoViewModel) = PhotoFragment(photoViewModel)
         @JvmStatic
-        fun newInstance(photoViewModel: PhotoViewModel) = PhotoFragment(photoViewModel)
+        fun newInstance() = PhotoFragment()
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
