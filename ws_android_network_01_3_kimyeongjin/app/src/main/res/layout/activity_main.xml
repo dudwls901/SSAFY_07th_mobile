@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="8dp"
+        tools:context=".MainActivity">
+        <!--var name: String, var tel: String, var lat: Double, var lng: Double-->
+        <TextView
+            android:id="@+id/storeNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@id/storeLatTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="싸피벅스" />
+
+        <TextView
+            android:id="@+id/storeTelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="@id/storeNameTextView"
+            app:layout_constraintStart_toEndOf="@id/storeNameTextView"
+            tools:text="010-1234-5678" />
+
+
+        <TextView
+            android:id="@+id/storeLatTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/storeNameTextView"
+            tools:text="위도 : 37.1902389102" />
+
+        <TextView
+            android:id="@+id/storeLngTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/storeLatTextView"
+            app:layout_constraintStart_toEndOf="@id/storeLatTextView"
+            app:layout_constraintTop_toBottomOf="@id/storeNameTextView"
+            tools:text="경도 : 126.19023891" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="가맹점 정보 불러오기"
+            app:layout_constraintBottom_toTopOf="@id/progressStateTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/storeLatTextView" />
+
+        <TextView
+            android:id="@+id/progressStateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toTopOf="@id/progressBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button"
+            tools:text="준비 완료" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="30dp"
+            tools:progress="50"
+            app:layout_constraintBottom_toTopOf="@id/progressStateNumTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressStateTextView" />
+
+        <TextView
+            android:id="@+id/progressStateNumTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressBar"
+            tools:text="0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
