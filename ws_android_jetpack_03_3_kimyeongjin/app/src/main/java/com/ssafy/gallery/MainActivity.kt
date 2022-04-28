@@ -9,8 +9,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+
 import androidx.navigation.fragment.NavHostFragment
 import androidx.work.*
 import com.ssafy.gallery.databinding.ActivityMainBinding
@@ -18,10 +19,12 @@ import com.ssafy.gallery.databinding.ActivityMainBinding
 private const val TAG = "MainActivity_sss"
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     private var backButtonTime = 0L
     private lateinit var workManager: WorkManager
     //navigation
     private lateinit var navController: NavController
+
     companion object {
         private const val WORK_TAG = "WORK_TAG"
     }

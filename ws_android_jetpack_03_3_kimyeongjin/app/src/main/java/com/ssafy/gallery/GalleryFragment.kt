@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ssafy.gallery.databinding.FragmentGalleryBinding
 import kotlinx.coroutines.*
@@ -17,8 +16,10 @@ import kotlin.coroutines.CoroutineContext
 
 private const val TAG = "GalleryFragment_sss"
 
+
 class GalleryFragment() : Fragment(), PhotoClickListener, CoroutineScope {
     //val mainActivity: MainActivity
+
     private val job = Job()
 
     override val coroutineContext: CoroutineContext
@@ -52,6 +53,7 @@ class GalleryFragment() : Fragment(), PhotoClickListener, CoroutineScope {
 //        navController = view.findNavController()
 
 
+
         launch(coroutineContext) {
             withContext(Dispatchers.IO) {
                 photoList = galleryRepository.selectAllPhotos()
@@ -79,5 +81,6 @@ class GalleryFragment() : Fragment(), PhotoClickListener, CoroutineScope {
             R.id.action_galleryFragment_to_photoFragment,
             bundleOf(Pair("photoViewModel", photoViewModel))
         )
+
     }
 }
