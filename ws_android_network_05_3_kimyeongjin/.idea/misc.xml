@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/SSAFY/gumi06_07th_kimyeongjin/ws_android_network_04_3_kimyeongjin/app/src/main/res/layout/activity_main.xml" value="0.25833333333333336" />
+        <entry key="..\:/SSAFY/gumi06_07th_kimyeongjin/ws_android_network_04_3_kimyeongjin/app/src/main/res/layout/activity_receipt_list.xml" value="0.24375" />
+        <entry key="..\:/SSAFY/gumi06_07th_kimyeongjin/ws_android_network_04_3_kimyeongjin/app/src/main/res/layout/activity_store_menu.xml" value="0.2390625" />
+        <entry key="..\:/SSAFY/gumi06_07th_kimyeongjin/ws_android_network_04_3_kimyeongjin/app/src/main/res/layout/activity_store_menu_detail.xml" value="0.2390625" />
+        <entry key="..\:/SSAFY/gumi06_07th_kimyeongjin/ws_android_network_04_3_kimyeongjin/app/src/main/res/layout/list_item_receipt.xml" value="0.15104166666666666" />
+        <entry key="..\:/SSAFY/gumi06_07th_kimyeongjin/ws_android_network_05_3_kimyeongjin/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/SSAFY/gumi06_07th_kimyeongjin/ws_android_network_05_3_kimyeongjin/app/src/main/res/layout/activity_receipt_list.xml" value="0.36614583333333334" />
+        <entry key="..\:/SSAFY/gumi06_07th_kimyeongjin/ws_android_network_05_3_kimyeongjin/app/src/main/res/layout/dialog_store_info.xml" value="0.2" />
+        <entry key="..\:/Users/multicampus/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_list_item_2.xml" value="0.21195652173913043" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
